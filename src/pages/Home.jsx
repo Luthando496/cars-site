@@ -4,7 +4,8 @@ import {AiFillCar,AiOutlineCar} from 'react-icons/ai'
 import Carousel from "react-multi-carousel";
 import { motion } from 'framer-motion';
 import {fadeIn} from '../varients'
-import {FaStar} from 'react-icons/fa'
+import {FaStar,FaRoad,FaGasPump} from 'react-icons/fa'
+// import {TbManualGearbox} from 'react-icons/tb'
 
 
 const Home = () => {
@@ -353,6 +354,20 @@ const Home = () => {
                     <span className="text-sm ml-2 text-gray-600 font-semibold">(1 Review)</span>
                   </div>
                   <div className="w-full h-[1px] my-2 bg-pink-200"></div>
+                  <div className="grid grid-cols-3 w-[90%] mx-auto">
+                    <div className="flex items-center gap-2">
+                      <FaRoad />
+                      <span>9</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Electric</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Automatic</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="card-footer px-2 flex items-center">
                   <div className="card flex gap-1 items-center">
@@ -380,6 +395,20 @@ const Home = () => {
                     <span className="text-sm ml-2 text-gray-600 font-semibold">(1 Review)</span>
                   </div>
                   <div className="w-full h-[1px] my-2 bg-pink-200"></div>
+                  <div className="grid grid-cols-3 w-[90%] mx-auto">
+                    <div className="flex items-center gap-2">
+                      <FaRoad />
+                      <span>9</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Electric</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Automatic</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="card-footer px-2 flex items-center">
                   <div className="card flex gap-1 items-center">
@@ -406,6 +435,20 @@ const Home = () => {
                     <span className="text-sm ml-2 text-gray-600 font-semibold">(1 Review)</span>
                   </div>
                   <div className="w-full h-[1px] my-2 bg-pink-200"></div>
+                  <div className="grid grid-cols-3 w-[90%] mx-auto">
+                    <div className="flex items-center gap-2">
+                      <FaRoad />
+                      <span>9</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Electric</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Automatic</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="card-footer px-2 flex items-center">
                   <div className="card flex gap-1 items-center">
@@ -432,6 +475,20 @@ const Home = () => {
                     <span className="text-sm ml-2 text-gray-600 font-semibold">(1 Review)</span>
                   </div>
                   <div className="w-full h-[1px] my-2 bg-pink-200"></div>
+                  <div className="grid grid-cols-3 w-[90%] mx-auto">
+                    <div className="flex items-center gap-2">
+                      <FaRoad />
+                      <span>9</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Electric</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Automatic</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="card-footer px-2 flex items-center">
                   <div className="card flex gap-1 items-center">
@@ -457,6 +514,20 @@ const Home = () => {
                     <span className="text-sm ml-2 text-gray-600 font-semibold">(1 Review)</span>
                   </div>
                   <div className="w-full h-[1px] my-2 bg-pink-200"></div>
+                  <div className="grid grid-cols-3 w-[90%] mx-auto">
+                    <div className="flex items-center gap-2">
+                      <FaRoad />
+                      <span>9</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Electric</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Automatic</span>
+                    </div>
+                  </div>s
                 </div>
                 <div className="card-footer px-2 flex items-center">
                   <div className="card flex gap-1 items-center">
@@ -483,6 +554,20 @@ const Home = () => {
                     <span className="text-sm ml-2 text-gray-600 font-semibold">(1 Review)</span>
                   </div>
                   <div className="w-full h-[1px] my-2 bg-pink-200"></div>
+                  <div className="grid grid-cols-3 w-[90%] mx-auto">
+                    <div className="flex items-center gap-2">
+                      <FaRoad />
+                      <span>9</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Electric</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaGasPump />
+                      <span>Automatic</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="card-footer px-2 flex items-center">
                   <div className="card flex gap-1 items-center">
