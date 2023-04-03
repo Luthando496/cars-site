@@ -29,7 +29,7 @@ const Header = () => {
 
 <ul className="flex justify-between items-center">
   <li className="px-4 text-2xl">
-    <Link to="/sign-in" className='text-white font-thin'>Sign In</Link>
+    <Link to="/login" className='text-white font-thin'>Sign In</Link>
   </li>
   <li className="px-4 text-2xl">
     <Link to="/register" className='text-white font-thin'>Register</Link>

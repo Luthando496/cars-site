@@ -3,6 +3,7 @@ import {Avatar} from '@mui/material'
 import Carousel from "react-multi-carousel";
 import { FaStar } from 'react-icons/fa';
 import {Link} from 'react-router-dom'
+import Navbar from '../components/Navbar'
 
 
 
@@ -29,36 +30,9 @@ const Details = () => {
       };
   return (
     <>
-        <nav className="py-6 px-16 w-full bg-black flex items-center justify-between">
-              <Link to="/" className='text-3xl text-white font-thin'>AutoVibe.com</Link>
 
-              <ul className="hidden lg:flex justify-between items-center">
-                <li className="px-4 text-2xl">
-                  <Link to="/" className='text-white font-thin'>Home</Link>
-                </li>
-                <li className="px-4 text-2xl">
-                  <Link to="/" className='text-white font-thin'>Blog</Link>
-                </li>
-                <li className="px-4 text-2xl">
-                  <Link to="/listings" className='text-white font-thin'>Listings</Link>
-                </li>
-                <li className="px-4 text-2xl">
-                  <Link to="/about" className='text-white font-thin'>About</Link>
-                </li>
-                <li className="px-4 text-2xl">
-                  <Link to="/contact" className='text-white font-thin'>Contact</Link>
-                </li>
-              </ul>
+        <Navbar  />
 
-              <ul className="flex justify-between items-center">
-                <li className="px-4 text-2xl">
-                  <Link to="/sign-in" className='text-white font-thin'>Sign In</Link>
-                </li>
-                <li className="px-4 text-2xl">
-                  <Link to="/register" className='text-white font-thin'>Register</Link>
-                </li>
-              </ul>
-        </nav>
         <div className="w-[90%] mx-auto flex items-center mt-10 justify-between">
             <h2 className="text-3xl font-yellow-700 font-semibold">Kia Sorento S500 – 2022</h2>
 

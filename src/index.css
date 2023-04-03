@@ -9,8 +9,32 @@
     background-repeat: no-repeat;
 
 }
+
+
 .stats{
     background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/3966847/pexels-photo-3966847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.cont{
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/13474778/pexels-photo-13474778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.cars-back{
+    background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/7387470/pexels-photo-7387470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.cars-back-2{
+    background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5)), url('/assets/pexels-jay-pizzle-3894066.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
