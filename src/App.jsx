@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Footer from './components/Footer'
 import {Routes,Route} from 'react-router-dom'
 import "react-multi-carousel/lib/styles.css";
@@ -12,8 +12,10 @@ import About from './pages/About';
 
 
 
+
 function App() {
 
+  
 
   return (
           <>
