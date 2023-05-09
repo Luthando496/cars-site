@@ -1,9 +1,30 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {FaStar} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { SearchCars, fetchCars } from '../store/actions/carsActions';
+import {useDispatch,useSelector} from 'react-redux'
+import {USDollar} from '../utils'
+
 
 
 const Listings = () => {
+  const dispatch = useDispatch()
+  const {cars} = useSelector(state => state.cars)
+
+  
+
+  const ChangeMake=(make)=>{
+    console.log(make)
+    dispatch(SearchCars(make))
+  }
+
+
+  useEffect(()=>{
+    dispatch(fetchCars())
+
+  },[dispatch])
+
+
   return (
     <>
     <nav className="p-4 w-full bg-black flex items-center justify-between">
@@ -47,10 +68,10 @@ const Listings = () => {
 
               </select>
               {/*  */}
-              <select name="" id="" className='rounded-xl px-6 py-4 text-2xl font-light bg-white text-gray-800 w-full' >
+              <select onChange={(e)=> ChangeMake(e.target.value)}  name="" id="" className='rounded-xl px-6 py-4 text-2xl font-light bg-white text-gray-800 w-full' >
                 <option value="">Makes</option>
-                <option value="bmw">BMW</option>
-                <option value="benz">Mercedes-Benz</option>
+                <option value="BMW">BMW</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
                 <option value="benz">Toyota</option>
                 <option value="benz">Opel</option>
               </select>
@@ -74,7 +95,7 @@ const Listings = () => {
     <section className="py-10 w-full">
             <h1 className="text-4xl font-bold text-sky-900 pl-5">Listings</h1>
             <div className="w-[95%] mx-auto flex justify-between items-center">
-            <p className="my-16 pl-5">showing all 17 results</p>
+            <p className="my-16 pl-5">showing all {cars?.length} results</p>
               <select name="" id="" className='bg-sky-600 py-4 px-6 rounded-xl text-xl text-amber-900'>
                 <option value="16">Sort By</option>
                 <option value="1">Oldest</option>
@@ -85,16 +106,19 @@ const Listings = () => {
               </select>
             </div>
 
-            <div className="my-[7rem] w-[95%] mx-auto flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="my-[7rem] w-[95%] mx-auto flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <div className="card w-full border rounded-xl p-2 mr-10">
-                <div className="card-img relative">
-                  <img src="/assets/purple-bmw.jpg" alt="bmw" className='w-full h-[200px] object-cover rounded-xl' />
-                  <h3 className="text-sm text-white bg-blue-400 rounded-full absolute top-3 right-3 p-2">Featured</h3>
+            {cars?.map(car => (
+            <Link to={`/details/${car.id}`}  key={car.id} className="card w-full border rounded-xl p-2 mr-10  ">
+                <div className="card-img relative group overflow-hidden">
+                  <img src={car.image} alt="bmw" className='w-full h-[300px] object-cover duration-700 hover:scale-[1.7] rounded-xl' />
+
+                  <div className="absolute top-0 left-0 w-full h-full bg-black/20"></div>
+                  {car?.featured && <h3 className="text-sm text-white bg-blue-400 rounded-full absolute top-3 right-3 p-2">Featured</h3>}
                 </div>
                 <div className="card-content  pl-2 mt-3">
-                  <h2 className="text-sm  my-1 font-semibold">$1,250</h2>
-                  <p className="text-sm my-1  text-rose-900 font-semibold">Mercedes Benz S65 AMG</p>
+                  <h2 className="text-sm  my-1 font-semibold"> {USDollar.format(car.price)}</h2>
+                  <p className="text-sm my-1  text-rose-900 font-semibold">{car.name}</p>
                   <div className="flex gap-1  items-center">
                     <FaStar fill='gold' />
                     <FaStar fill='gold' />
@@ -111,85 +135,11 @@ const Listings = () => {
                   </div>
 
                 </div>
-            </div>
+            </Link>
+
+            ))}
             {/*  */}
-            <div className="card w-full border rounded-xl p-2 mr-10">
-                <div className="card-img relative">
-                  <img src="/assets/purple-bmw.jpg" alt="bmw" className='w-full h-[200px] object-cover rounded-xl' />
-                  <h3 className="text-sm text-white bg-blue-400 rounded-full absolute top-3 right-3 p-2">Featured</h3>
-                </div>
-                <div className="card-content  pl-2 mt-3">
-                  <h2 className="text-sm  my-1 font-semibold">$1,250</h2>
-                  <p className="text-sm my-1  text-rose-900 font-semibold">Mercedes Benz S65 AMG</p>
-                  <div className="flex gap-1  items-center">
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <span className="text-sm ml-2 text-gray-600 font-semibold">(1 Review)</span>
-                  </div>
-                  <div className="w-full h-[1px] my-2 bg-pink-200"></div>
-                </div>
-                <div className="card-footer px-2 flex items-center">
-                  <div className="card flex gap-1 items-center">
-
-                  </div>
-
-                </div>
-            </div>
-            {/*  */}
-            <div className="card w-full border rounded-xl p-2 mr-10">
-                <div className="card-img relative">
-                  <img src="/assets/purple-bmw.jpg" alt="bmw" className='w-full h-[200px] object-cover rounded-xl' />
-                  <h3 className="text-sm text-white bg-blue-400 rounded-full absolute top-3 right-3 p-2">Featured</h3>
-                </div>
-                <div className="card-content  pl-2 mt-3">
-                  <h2 className="text-sm  my-1 font-semibold">$1,250</h2>
-                  <p className="text-sm my-1  text-rose-900 font-semibold">Mercedes Benz S65 AMG</p>
-                  <div className="flex gap-1  items-center">
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <span className="text-sm ml-2 text-gray-600 font-semibold">(1 Review)</span>
-                  </div>
-                  <div className="w-full h-[1px] my-2 bg-pink-200"></div>
-                </div>
-                <div className="card-footer px-2 flex items-center">
-                  <div className="card flex gap-1 items-center">
-
-                  </div>
-
-                </div>
-            </div>
-            {/*  */}
-            <div className="card w-full border rounded-xl p-2 mr-10">
-                <div className="card-img relative">
-                  <img src="/assets/purple-bmw.jpg" alt="bmw" className='w-full h-[200px] object-cover rounded-xl' />
-                  <h3 className="text-sm text-white bg-blue-400 rounded-full absolute top-3 right-3 p-2">Featured</h3>
-                </div>
-                <div className="card-content  pl-2 mt-3">
-                  <h2 className="text-sm  my-1 font-semibold">$1,250</h2>
-                  <p className="text-sm my-1  text-rose-900 font-semibold">Mercedes Benz S65 AMG</p>
-                  <div className="flex gap-1  items-center">
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <FaStar fill='gold' />
-                    <span className="text-sm ml-2 text-gray-600 font-semibold">(1 Review)</span>
-                  </div>
-                  <div className="w-full h-[1px] my-2 bg-pink-200"></div>
-                </div>
-                <div className="card-footer px-2 flex items-center">
-                  <div className="card flex gap-1 items-center">
-
-                  </div>
-
-                </div>
-            </div>
+            
             {/*  */}
 
             </div>

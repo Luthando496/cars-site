@@ -1,9 +1,12 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {Avatar} from '@mui/material'
 import Carousel from "react-multi-carousel";
 import { FaStar } from 'react-icons/fa';
-import {Link} from 'react-router-dom'
+import {Link,useParams} from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import {useDispatch,useSelector} from 'react-redux'
+import { getDetails } from '../store/actions/carsActions';
+import {USDollar} from '../utils'
 
 
 
@@ -28,15 +31,27 @@ const Details = () => {
           items: 1
         }
       };
+
+    const {id} = useParams()
+
+    const {car} = useSelector(state => state.cars)
+
+    const dispatch = useDispatch()
+
+      useEffect(()=>{
+        dispatch(getDetails(id))
+
+      },[])
+      
   return (
     <>
 
         <Navbar  />
 
-        <div className="w-[90%] mx-auto flex items-center mt-10 justify-between">
-            <h2 className="text-3xl font-yellow-700 font-semibold">Kia Sorento S500 – 2022</h2>
+        <div className="w-[90%] mx-auto flex items-center mt-32 justify-between">
+            <h2 className="text-3xl font-yellow-700 font-semibold">{car?.name}</h2>
 
-            <h3 className="text-2xl text-blue-700 font-bold">R2 000 000</h3>
+            <h3 className="text-2xl text-emerald-700 font-bold">{USDollar.format(car?.price)}</h3>
 
         </div>
     
@@ -45,12 +60,14 @@ const Details = () => {
 
         {/* left */}
         <div className='flex col-span-2 flex-col space-y-8'>
-        <Carousel responsive={responsive} className="w-full h-[70vh]">
-            <img src="https://images.pexels.com/photos/6872163/pexels-photo-6872163.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="slider" className='w-full h-full object-cover rounded-lg' />
-            <img src="/assets/pexels-maria-geller-2127039.jpg" alt="slider" className='w-full h-full object-cover rounded-lg' />
-            <img src="/assets/audi-orange.jpg" alt="slider" className='w-full h-full object-cover rounded-lg' />
-            
-        </Carousel>
+        {car && <Carousel responsive={responsive} className="w-full h-[70vh] rounded-2xl border shadow-xl shadow-stone-500">
+        {car?.images?.map((image,index) => (
+            <div key={index} className="w-full h-full relative">
+                <img src={image.url} className="w-full h-full object-cover rounded-lg" />
+                <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
+            </div>
+        ))}
+        </Carousel>}
 
         <div className=" w-full border rounded-2xl py-8 px-6">
             <h2 className="text-2xl font-bold text-blue-800">Details</h2>
@@ -62,11 +79,11 @@ const Details = () => {
                 </li>
                 <li className="flex py-2 items-center justify-between border-b border-gray-500">
                     <h3 className="text-md font-semibold ">Make:</h3>
-                    <h3 className="text-md font-light ">Kia</h3>
+                    <h3 className="text-md font-light ">{car?.make}</h3>
                 </li>
                 <li className="flex py-2 items-center justify-between border-b border-gray-500">
                     <h3 className="text-md font-semibold ">Model:</h3>
-                    <h3 className="text-md font-light ">sz-9</h3>
+                    <h3 className="text-md font-light ">{car?.model}</h3>
                 </li>
                 <li className="flex py-2 items-center justify-between border-b border-gray-500">
                     <h3 className="text-md font-semibold ">Color:</h3>
@@ -86,11 +103,11 @@ const Details = () => {
                 </li>
                 <li className="flex py-2 items-center justify-between border-b border-gray-500">
                     <h3 className="text-md font-semibold ">Year:</h3>
-                    <h3 className="text-md font-light ">2017</h3>
+                    <h3 className="text-md font-light ">{car?.year}</h3>
                 </li>
                 <li className="flex py-2 items-center justify-between border-b border-gray-500">
                     <h3 className="text-md font-semibold ">Mileage:</h3>
-                    <h3 className="text-md font-light ">10 000(KM)</h3>
+                    <h3 className="text-md font-light ">{car?.mileage}(KM)</h3>
                 </li>
                 <li className="flex py-2 items-center justify-between border-b border-gray-500">
                     <h3 className="text-md font-semibold ">Fuel Type:</h3>
@@ -319,10 +336,10 @@ const Details = () => {
 
             </div>
 
-            <input type="text" className="px-6 py-4 w-full border-2 rounded-2xl focus:outline-none focus:border-sky-500" placeholder='Your Name' />
-            <input type="text" className="px-6 py-4 w-full border-2 rounded-2xl focus:outline-none focus:border-sky-500" placeholder='Your Email' />
-            <input type="text" className="px-6 py-4 w-full border-2 rounded-2xl focus:outline-none focus:border-sky-500" placeholder='Your Phone no' />
-            <input type="text" className="px-6  pt-6 pb-[8rem] w-full border-2 rounded-2xl focus:outline-none focus:border-sky-500" placeholder='Message' />
+            <input type="text" className="px-12 text-gray-400 duration-300 focus:tracking-[4px] py-4 w-full border-2  focus:outline-none focus:border-orange-300" placeholder='Your Name' />
+            <input type="text" className="px-12 text-gray-400 duration-300  focus:tracking-[4px] py-4 w-full border-2  focus:outline-none focus:border-orange-300" placeholder='Your Email' />
+            <input type="text" className="px-12 text-gray-400 duration-300  focus:tracking-[4px] py-4 w-full border-2  focus:outline-none focus:border-orange-300" placeholder='Your Phone no' />
+            <input type="text" className="px-6  pt-6 pb-[8rem] w-full border-2  focus:outline-none focus:border-orange-300" placeholder='Message' />
 
             <button className="text-white w-full  bg-orange-600 text-xl text-center px-6 rounded-2xl capitalize py-4">Send A Message</button>
             <button className="text-white w-full  bg-green-600 text-xl text-center px-6 rounded-2xl capitalize py-4">WhatsApp</button>

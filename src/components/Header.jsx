@@ -56,9 +56,6 @@ const Header = () => {
                 <li className="px-4 text-2xl">
                   <Link to="/login" className='text-white font-thin'>Sign In</Link>
                 </li>
-                <li className="px-4 text-2xl">
-                  <Link to="/register" className='text-white font-thin'>Register</Link>
-                </li>
             </ul>
 
 

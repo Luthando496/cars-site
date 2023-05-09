@@ -1,15 +1,15 @@
-import { useState,useEffect } from 'react'
+import { useState,useEffect,lazy,Suspense } from 'react'
 import Footer from './components/Footer'
+import {Vortex} from 'react-loader-spinner'
 import {Routes,Route} from 'react-router-dom'
 import "react-multi-carousel/lib/styles.css";
-import Listings from './pages/Listings';
-import Home from './pages/Home';
-import Details from './pages/Details';
-import Contact from './pages/Contact';
-import SignIn from './pages/SignIn';
-import Register from './pages/Register';
-import About from './pages/About';
-
+const Listings = lazy(()=>import('./pages/Listings'));
+const Home = lazy(()=>import('./pages/Home'));
+const Details = lazy(()=>import('./pages/Details'));
+const Contact = lazy(()=>import('./pages/Contact'));
+const SignIn = lazy(()=>import('./pages/SignIn'));
+const Register = lazy(()=>import('./pages/Register'));
+const About = lazy(()=>import('./pages/About'));
 
 
 
@@ -19,10 +19,19 @@ function App() {
 
   return (
           <>
+          <Suspense fallback={<div className='w-full mt-24 h-[60vh] flex justify-center items-center'><Vortex visible={true}
+        height="400"
+        width="400"
+        ariaLabel="vortex-loading"
+        wrapperStyle={{}}
+        wrapperClass="vortex-wrapper"
+        colors={['black', 'pink', 'blue', 'yellow', 'orange', 'purple']}
+        /></div>}>
+
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/listings" element={<Listings />} />
-            <Route path="/details" element={<Details />} />
+            <Route path="/details/:id" element={<Details />} />
             <Route path="/contact" element={<Contact/>} />
             <Route path="/login" element={<SignIn  />} />
             <Route path="/about" element={<About  />} />
@@ -31,6 +40,8 @@ function App() {
             
 
           </Routes>
+        </Suspense>
+
           <Footer />
 
           

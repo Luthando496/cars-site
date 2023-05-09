@@ -19,6 +19,7 @@ const SignIn = () => {
                 <label htmlFor="email" className="block text-xl font-medium text-sky-600">Full Name</label>
                 <input type="text"  className="shadow appearance-none border w-full py-4 px-6 text-sky-600 rounded-xl leading-tight focus:outline-none focus:shadow-outline" placeholder="Full name" />
               </div>
+              <button className="text-xl uppercase rounded text-white tracking-[2px] w-full bg-sky-500 hover:bg-blue-500 duration-700 font-semibold py-6 px-8 text-center">Register</button>
             </form>
           </div>
         </div>

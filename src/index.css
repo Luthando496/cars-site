@@ -28,7 +28,7 @@
 
 
 .cars-back{
-    background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/7387470/pexels-photo-7387470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5)), url('/assets/06f2865e8de49fd56e69839b17df7887.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
