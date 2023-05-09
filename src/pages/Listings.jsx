@@ -72,8 +72,10 @@ const Listings = () => {
                 <option value="">Makes</option>
                 <option value="BMW">BMW</option>
                 <option value="Mercedes-Benz">Mercedes-Benz</option>
-                <option value="benz">Toyota</option>
-                <option value="benz">Opel</option>
+                <option value="Lamborghini">Lamborghini</option>
+                <option value="Aston Martin">Aston Martin</option>
+                <option value="Audi">Audi</option>
+                <option value="Maserati">Maserati</option>
               </select>
               {/*  */}
               <select name="" id="" className='rounded-xl px-6 py-4 text-2xl font-light bg-white text-gray-800 w-full' >

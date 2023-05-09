@@ -32,15 +32,25 @@ export const SearchCars = (make) => async dispatch => {
     const colRef = collection(db, "cars");
     // const docSnap = await getDocs(colRef);
     try {
+        console.log(make.length)
+        if(make.length > 0) {
+            const q = query(colRef, where("make", "==", `${make}`));
 
-    const q = query(colRef, where("make", "==", `${make}`));
-
-      const docsSnap = await getDocs(q);
+            const docsSnap = await getDocs(q);
+          //   console.log(docsSnap)
+            if(docsSnap.docs.length > 0) {
+                  console.log(docsSnap.docs.map(doc => doc.data()))
+                  dispatch(carsAction.fetchCars((docsSnap.docs.map(doc=>doc.data()))))
+            }
+        }else{
+            const docsSnap = await getDocs(colRef);
     //   console.log(docsSnap)
       if(docsSnap.docs.length > 0) {
             console.log(docsSnap.docs.map(doc => doc.data()))
             dispatch(carsAction.fetchCars((docsSnap.docs.map(doc=>doc.data()))))
       }
+        }
+
   }catch(err){
     console.log(err.response && err.response.data.message
         ? err.response.data.message
