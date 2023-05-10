@@ -50,7 +50,7 @@ const Navbar = () => {
               <ul className="flex justify-between items-center">
                 {user ?
                   <li className="px-4 ">
-                  <Link onClick={logout} to="/" className='text-white text-md lg:text-2xl font-thin'>Logout</Link>
+                  <Link onClick={logout} to="/" className='text-white text-xl lg:text-2xl font-thin'>Logout</Link>
                 </li> 
                 :<li className="px-4 ">
                   <Link to="/login" className='text-white text-md lg:text-2xl font-thin'>Sign In</Link>
@@ -58,10 +58,10 @@ const Navbar = () => {
               </ul>
 
               <button className="lg:hidden" onClick={()=> setShow(!show)}>
-                <GiHamburgerMenu className="text-pink-500 text-5xl" />
+                <GiHamburgerMenu className="text-pink-500 text-5xl cursor-pointer " />
               </button>
 
-              <div className={`${!show ? 'absolute lg:hidden top-0 z-50 border shadow-2xl translate-x-[700px]':'absolute lg:hidden top-0 z-50 border shadow-2xl translate-x-[0px]' } duration-500 absolute lg:hidden top-0 right-0 z-50 border shadow-2xl  bg-white w-[300px] h-full`}>
+              <div className={`${!show ? 'fixed lg:hidden top-0 z-50 border shadow-2xl translate-x-[700px]':'fixed lg:hidden top-0 z-50 border shadow-2xl translate-x-[0px]' } duration-500 fixed lg:hidden top-0 right-0 z-50 border shadow-2xl  bg-white w-[300px] h-screen`}>
                 <div className="flex justify-end px-8 mt-5">
                 <FaTimes onClick={()=> setShow(!show)} className="text-pink-500 text-6xl" />
                 </div>

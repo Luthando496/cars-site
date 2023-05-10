@@ -98,6 +98,32 @@ export const getDetails = (id) =>
         }
 }
 
+export const highSort=()=>{
+    return dispatch=>{
+        dispatch(carsAction.sortHigh())
+    }
+    }
+    
+    
+export const lowSort=()=>{
+    return dispatch=>{
+        dispatch(carsAction.sortLow())
+    }
+}
+
+
+export const lowYear =()=>{
+    return dispatch=>{
+        dispatch(carsAction.sortYearLow())
+    }
+}
+
+export const highYear =()=>{
+    return dispatch=>{
+        dispatch(carsAction.sortYearHigh())
+    }
+}
+
 
 export const login = (email,password) =>{
     return async dispatch =>{

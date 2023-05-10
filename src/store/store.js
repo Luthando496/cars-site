@@ -24,6 +24,22 @@ const carsSlice = createSlice({
             state.car = action.payload
             state.loading = false
         },
+        sortHigh(state){
+            state.cars = state.cars.sort((a,b)=>b.price - a.price)
+                
+        },
+        sortLow(state){
+            state.cars = state.cars?.sort((a,b)=>a.price + b.price)
+            
+        },
+        sortYearHigh(state){
+            state.cars = state.cars.sort((a,b)=>b.year - a.year)
+                
+        },
+        sortYearLow(state){
+            state.cars = state.cars?.sort((a,b)=> a.year + b.year)
+            
+        },
     }
 })
 

@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import {FaStar} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { SearchCars, fetchCars } from '../store/actions/carsActions';
+import { SearchCars, fetchCars, highSort, highYear, lowSort, lowYear } from '../store/actions/carsActions';
 import {useDispatch,useSelector} from 'react-redux'
 import {USDollar} from '../utils'
 import Navbar from '../components/Navbar';
@@ -15,8 +15,24 @@ const Listings = () => {
   
 
   const ChangeMake=(make)=>{
-    console.log(make)
     dispatch(SearchCars(make))
+  }
+
+  const Sort=(value)=>{
+    if(value === 'low'){
+      dispatch(lowSort())
+      // console.log(newCars)
+    }
+    if(value === 'high'){
+      dispatch(highSort())
+    }
+    if(value === 'new'){
+      dispatch(highYear())
+    }
+    if(value === 'old'){
+      dispatch(lowYear())
+    }
+    
   }
 
 
@@ -100,12 +116,12 @@ const Listings = () => {
             <h1 className="text-4xl font-bold text-sky-900 pl-5">Listings</h1>
             <div className="w-[95%] mx-auto flex justify-between items-center">
             <p className="my-16 pl-5">showing all {cars?.length} results</p>
-              <select name="" id="" className='bg-sky-600 py-4 px-6 rounded-xl text-xl text-amber-900'>
+              <select name="select-price" onChange={(e)=> Sort(e.target.value)} className='bg-sky-600 py-4 px-6 rounded-xl text-xl text-amber-900'>
                 <option value="16">Sort By</option>
-                <option value="1">Oldest</option>
-                <option value="2">Newest</option>
-                <option value="3">Lowest Price</option>
-                <option value="4">Highest Price</option>
+                <option value="old">Oldest</option>
+                <option value="new">Newest</option>
+                <option value="low">Lowest Price</option>
+                <option value="high">Highest Price</option>
 
               </select>
             </div>
@@ -122,7 +138,8 @@ const Listings = () => {
                 </div>
                 <div className="card-content  pl-2 mt-3">
                   <h2 className="text-sm  my-1 font-semibold"> {USDollar.format(car.price)}</h2>
-                  <p className="text-sm my-1  text-rose-900 font-semibold">{car.name}</p>
+                  <p className="text-md my-1  text-rose-900 font-semibold">{car.name}</p>
+                  <p className="text-md my-1  text-rose-900 font-semibold">{car.year}</p>
                   <div className="flex gap-1  items-center">
                     <FaStar fill='gold' />
                     <FaStar fill='gold' />
