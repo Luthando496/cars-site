@@ -1,5 +1,6 @@
 // import {} from 'red'
 import {createSlice,configureStore} from '@reduxjs/toolkit'
+import {userReducer} from './userStore'
 
 
 const carsSlice = createSlice({
@@ -34,7 +35,8 @@ export const carsAction = carsSlice.actions
 
 const store = configureStore({
     reducer:{
-        cars:carsSlice.reducer
+        cars:carsSlice.reducer,
+        auth:userReducer
     }
 
 })

@@ -1,12 +1,16 @@
 import React,{useState} from 'react'
 import Navbar from '../components/Navbar'
-import {  createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../firebase';
+import {useDispatch,useSelector} from 'react-redux'
+import { login } from '../store/actions/carsActions'
 
 
 
 
 const SignIn = () => {
+  const dispatch = useDispatch()
+  const {user} = useSelector(state => state.auth)
+
+
   const [email,setEmail] = useState('')
 
 
@@ -15,15 +19,9 @@ const SignIn = () => {
 
   const Submit =(e)=> {
     e.preventDefault()
-    console.log(email,password)
+    dispatch(login(email,password))
 
-    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-        console.log(userCredential.user)
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+    
   }
 
 

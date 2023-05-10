@@ -3,6 +3,7 @@ import Footer from './components/Footer'
 import {Vortex} from 'react-loader-spinner'
 import {Routes,Route} from 'react-router-dom'
 import "react-multi-carousel/lib/styles.css";
+import { useSelector } from 'react-redux'
 const Listings = lazy(()=>import('./pages/Listings'));
 const Home = lazy(()=>import('./pages/Home'));
 const Details = lazy(()=>import('./pages/Details'));
@@ -13,8 +14,11 @@ const About = lazy(()=>import('./pages/About'));
 
 
 
+
+
 function App() {
 
+const {user} = useSelector(state => state.auth)
   
 
   return (

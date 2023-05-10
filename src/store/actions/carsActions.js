@@ -1,7 +1,9 @@
 import {carsAction} from '../store'
+import {userAction} from '../userStore'
 import { doc, getDocs,collection , query, where,getDoc } from "firebase/firestore";
 import {db} from '../../firebase'
-
+import {  signInWithEmailAndPassword  } from "firebase/auth";
+import { auth } from '../../firebase';
 
 
 
@@ -94,4 +96,22 @@ export const getDetails = (id) =>
                 ? err.response.data.message
                 : err.message))
         }
+}
+
+
+export const login = (email,password) =>{
+    return async dispatch =>{
+        // try{
+            signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+               dispatch(userAction.login(userCredential.user))
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+              });
+        // }catch(err){
+        //     console.log(err)
+        // }
+    }
+
 }
