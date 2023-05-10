@@ -64,52 +64,6 @@ const Header = () => {
             </button>
             </div>
             </nav>
-
-            
-
-
-            <div className="absolute top-0 rounded-xl w-[500px] translate-y-[20%] left-[2rem] py-8  bg-amber-100/10">
-              <div className="px-10 mx-auto">
-                <h3 className="text-center text-md text-black font-semibold">Search Vehicles</h3>
-                <form className="form mt-2">
-                  <div className="form-controlling mt-4">
-                  <h2 className="text-xl font-bold ">MAKE</h2>
-
-                  <select name="" defaultValue={''} onChange={(e)=> ChangeMake(e.target.value)} id="" className='w-full py-4 px-4 border rounded-xl mt-4 bg-white'>
-                    <option className='border-b border-b-gray-700' value="">Make</option>
-                    <option value="BMW">BMW</option>
-                    <option value="Mercedes-Benz">Mercedes-Benz</option>
-                    <option value="Lamborghini">Lamborghini</option>
-                    <option value="Aston Martin">Aston Martin</option>
-                    <option value="Audi">Audi</option>
-                    <option value="Maserati">Maserati</option>
-                  </select>
-                  </div>
-                  <div className="form-controlling mt-4">
-                  <h2 className="text-xl font-bold ">Body Type</h2>
-                  <select name="" id="" className='w-full py-4 px-4 border rounded-xl mt-4 bg-white'>
-                  {cars?.map(car=>(
-                    <option key={car.id}  className='border-b border-b-gray-700' value={car.model}>{car.model}</option>
-                  ))}
-                  </select>
-                  </div>
-                  {/* <div className="form-controlling mt-8">
-                  <h2 className="text-xl font-bold ">Price</h2>
-                  <div className="inp mt-4 grid grid-cols-2 gap-4">
-                    <input type="text" placeholder='price min' className='p-4 border rounded-xl focus:border-amber-400 focus:outline-none' />
-                    <input type="text" placeholder='price max' className='p-4 border rounded-xl focus:border-amber-400 focus:outline-none' />
-                  </div>
-                  </div> */}
-                    <div className="btn-container mt-4 w-full">
-
-                  <button className="w-full text-white text-xl rounded-xl p-4 bg-sky-700">Search Cars</button>
-                    </div>
-
-                </form>
-
-              </div>
-
-            </div>
     </header>
         
 

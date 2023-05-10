@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { SearchCars, fetchCars } from '../store/actions/carsActions';
 import {useDispatch,useSelector} from 'react-redux'
 import {USDollar} from '../utils'
+import Navbar from '../components/Navbar';
 
 
 
@@ -27,7 +28,7 @@ const Listings = () => {
 
   return (
     <>
-    <nav className="p-4 w-full bg-black flex items-center justify-between">
+    {/* <nav className="p-4 w-full bg-black flex items-center justify-between">
               <Link to="/" className='text-3xl text-white font-thin'>AutoVibe.com</Link>
 
               <ul className="hidden lg:flex justify-between items-center">
@@ -56,7 +57,8 @@ const Listings = () => {
                   <Link to="/register" className='text-white font-thin'>Register</Link>
                 </li>
               </ul>
-    </nav>
+    </nav> */}
+    <Navbar />
 
     <section className="top-bar bg-black px-6 py-8">
             <form className="w-[90%] mx-auto flex flex-col space-y-4 sm:grid md:grid-cols-3 lg:grid-cols-4 gap-4 items-baseline">
@@ -69,7 +71,7 @@ const Listings = () => {
               </select>
               {/*  */}
               <select onChange={(e)=> ChangeMake(e.target.value)}  name="" id="" className='rounded-xl px-6 py-4 text-2xl font-light bg-white text-gray-800 w-full' >
-                <option value="">Makes</option>
+                <option value="">All</option>
                 <option value="BMW">BMW</option>
                 <option value="Mercedes-Benz">Mercedes-Benz</option>
                 <option value="Lamborghini">Lamborghini</option>
