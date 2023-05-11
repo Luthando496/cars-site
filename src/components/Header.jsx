@@ -1,28 +1,43 @@
 import React,{useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {FaHamburger} from 'react-icons/fa'
-import { SearchCars, fetchCars } from '../store/actions/carsActions';
+import { SearchCars, SignOut, fetchCars } from '../store/actions/carsActions';
 import {useDispatch,useSelector} from 'react-redux'
+import { auth } from '../firebase';
+import {  signOut } from "firebase/auth";
 
 
 
 const Header = () => {
   const [show,setShow] = useState(false)
   const dispatch = useDispatch()
-  const {cars} = useSelector(state => state.cars)
+  // const {cars} = useSelector(state => state.cars)
+  const {user} = useSelector(state => state.auth)
 
-  const ChangeMake=(make)=>{
+  const logout=()=>{
+    dispatch(SignOut())
 
-    dispatch(SearchCars(make))
+  signOut(auth).then(() => {
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+    console.log(error)
+  });
   }
+
+
+  // const ChangeMake=(make)=>{
+
+  //   dispatch(SearchCars(make))
+  // }
 
   
     
 
-    useEffect(()=>{
-      dispatch(fetchCars())
+  //   useEffect(()=>{
+  //     dispatch(fetchCars())
 
-    },[dispatch])
+  //   },[dispatch])
 
 
 
@@ -53,9 +68,13 @@ const Header = () => {
             </ul>
 
             <ul className="flex justify-between items-center">
-                <li className="px-4 text-2xl">
-                  <Link to="/login" className='text-white font-thin'>Sign In</Link>
-                </li>
+            {user ?
+                  <li className="px-4 ">
+                  <Link onClick={logout} to="/" className='text-white text-xl lg:text-2xl font-thin'>Logout</Link>
+                </li> 
+                :<li className="px-4 ">
+                  <Link to="/login" className='text-white text-md lg:text-2xl font-thin'>Sign In</Link>
+                </li>}
             </ul>
 
 

@@ -2,6 +2,9 @@ import { useState,useEffect,lazy,Suspense } from 'react'
 import Footer from './components/Footer'
 import {Vortex} from 'react-loader-spinner'
 import {Routes,Route} from 'react-router-dom'
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "react-multi-carousel/lib/styles.css";
 import { useSelector } from 'react-redux'
 const Listings = lazy(()=>import('./pages/Listings'));
@@ -23,6 +26,18 @@ const {user} = useSelector(state => state.auth)
 
   return (
           <>
+          <ToastContainer
+position="top-center"
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
           <Suspense fallback={<div className='w-full mt-24 h-[60vh] flex justify-center items-center'><Vortex visible={true}
         height="400"
         width="400"

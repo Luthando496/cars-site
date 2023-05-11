@@ -1,14 +1,26 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Navbar from '../components/Navbar'
 import {useDispatch,useSelector} from 'react-redux'
 import { login } from '../store/actions/carsActions'
+import {useNavigate} from 'react-router-dom'
+import { toast } from 'react-toastify';
+
 
 
 
 
 const SignIn = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const {user} = useSelector(state => state.auth)
+
+  useEffect(()=>{
+    if(user){
+      navigate('/')
+    }
+
+  },[user])
+
 
 
   const [email,setEmail] = useState('')
@@ -20,6 +32,7 @@ const SignIn = () => {
   const Submit =(e)=> {
     e.preventDefault()
     dispatch(login(email,password))
+      toast.success('Login Successful')
 
     
   }
@@ -45,7 +58,7 @@ const SignIn = () => {
                 <input value={password} minLength={7} name='password'  onChange={e => setPassword(e.target.value)}  type="text"  className="shadow appearance-none border w-full py-4 px-6 text-sky-600 rounded-xl leading-tight focus:outline-none focus:shadow-outline" placeholder="Full name" />
               </div>
               <button className="text-xl uppercase rounded text-white tracking-[2px] w-full bg-sky-500 hover:bg-blue-500 duration-700 font-semibold py-6 px-8 text-center">Register</button>
-              <button className="text-xl hover:translate-y-2 shadow-2xl hover:shadow uppercase rounded text-white tracking-[2px] w-full bg-black hover:bg-black/80 duration-700 font-semibold py-6 px-8 text-center">GOOGLE Sign In</button>
+              {/* <button className="text-xl hover:translate-y-2 shadow-2xl hover:shadow uppercase rounded text-white tracking-[2px] w-full bg-black hover:bg-black/80 duration-700 font-semibold py-6 px-8 text-center">GOOGLE Sign In</button> */}
             </form>
           </div>
         </div>

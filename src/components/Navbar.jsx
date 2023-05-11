@@ -2,15 +2,18 @@ import React,{useState}from 'react'
 import {Link} from 'react-router-dom'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {FaTimes} from 'react-icons/fa'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {  signOut } from "firebase/auth";
 import { auth } from '../firebase';
+import {SignOut} from '../store/actions/carsActions'
+import { toast } from 'react-toastify'
 
 
 
 const Navbar = () => {
 
   const [show, setShow] = useState(false)
+  const dispatch = useDispatch()
 
 
   const {user} = useSelector(state => state.auth)
@@ -18,6 +21,8 @@ const Navbar = () => {
 
 
   const logout=()=>{
+    toast.success('You have been logged out')
+    dispatch(SignOut())
 
   signOut(auth).then(() => {
     // Sign-out successful.

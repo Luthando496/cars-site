@@ -5,6 +5,7 @@ import Carousel from "react-multi-carousel";
 import { motion } from 'framer-motion';
 import {fadeIn} from '../varients'
 import {FaStar,FaRoad,FaGasPump} from 'react-icons/fa'
+import Testimonials from '../components/Testimonials';
 // import {TbManualGearbox} from 'react-icons/tb'
 
 
@@ -317,18 +318,9 @@ const Home = () => {
           <section className="mt-24 py-[5rem] w-full">
             <h1 className="text-4xl text-center font-bold text-sky-900">Our Testimonials</h1>
 
-            <div className="w-[75%] mx-auto mt-8 text-center flex flex-col items-center">
-              <p className="text-xl tracking-[2px] text-gray-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis id voluptates, saepe distinctio rem aliquam expedita nemo tenetur adipisci ea quaerat vel voluptatum nostrum ab magnam illum minus soluta molestias laudantium. Ullam exercitationem, dolorem officiis sapiente optio aspernatur!
-              </p>
+           <Testimonials />
 
-              <h2 className="font-bold text-2xl my-4">John Doe</h2>
-              <p className="text-sm font-thin my-4">Marketing</p>
-
-              <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="profile" className='rounded-[50%] w-20 text-center' />
-
-              
-            </div>
+           
           </section>
 
           <section className="mt-24 w-full py-[5rem] bg-slate-200/10 ">

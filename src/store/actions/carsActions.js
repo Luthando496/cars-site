@@ -2,7 +2,7 @@ import {carsAction} from '../store'
 import {userAction} from '../userStore'
 import { doc, getDocs,collection , query, where,getDoc } from "firebase/firestore";
 import {db} from '../../firebase'
-import {  signInWithEmailAndPassword  } from "firebase/auth";
+import {  createUserWithEmailAndPassword  } from "firebase/auth";
 import { auth } from '../../firebase';
 
 
@@ -111,6 +111,12 @@ export const lowSort=()=>{
     }
 }
 
+export const SignOut=()=>{
+    return dispatch=>{
+        dispatch(userAction.logout())
+    }
+}
+
 
 export const lowYear =()=>{
     return dispatch=>{
@@ -128,7 +134,7 @@ export const highYear =()=>{
 export const login = (email,password) =>{
     return async dispatch =>{
         // try{
-            signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+            createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
                dispatch(userAction.login(userCredential.user))
               })
               .catch((error) => {
