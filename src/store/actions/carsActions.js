@@ -22,7 +22,7 @@ export const fetchCars = () => async dispatch => {
     console.log(err.response && err.response.data.message
         ? err.response.data.message
         : err.message)
-    dispatch(productAction.ProductsFail(err.response && err.response.data.message
+    dispatch(carsAction.fetchFail(err.response && err.response.data.message
         ? err.response.data.message
         : err.message))
 }
@@ -57,7 +57,7 @@ export const SearchCars = (make) => async dispatch => {
     console.log(err.response && err.response.data.message
         ? err.response.data.message
         : err.message)
-    dispatch(productAction.ProductsFail(err.response && err.response.data.message
+    dispatch(carsAction.fetchFail(err.response && err.response.data.message
         ? err.response.data.message
         : err.message))
 }
